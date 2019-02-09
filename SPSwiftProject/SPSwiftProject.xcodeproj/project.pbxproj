@@ -12,6 +12,7 @@
 		404E5DA1220F5A0600D84467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404E5D9F220F5A0600D84467 /* Main.storyboard */; };
 		404E5DA3220F5A0900D84467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 404E5DA2220F5A0900D84467 /* Assets.xcassets */; };
 		404E5DA6220F5A0900D84467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404E5DA4220F5A0900D84467 /* LaunchScreen.storyboard */; };
+		404E5DAE220F634400D84467 /* TutorialPractice in Resources */ = {isa = PBXBuildFile; fileRef = 404E5DAD220F634400D84467 /* TutorialPractice */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		404E5DA2220F5A0900D84467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		404E5DA5220F5A0900D84467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		404E5DA7220F5A0900D84467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		404E5DAD220F634400D84467 /* TutorialPractice */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TutorialPractice; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		404E5D9A220F5A0600D84467 /* SPSwiftProject */ = {
 			isa = PBXGroup;
 			children = (
+				404E5DAD220F634400D84467 /* TutorialPractice */,
 				404E5D9B220F5A0600D84467 /* AppDelegate.swift */,
 				404E5D9D220F5A0600D84467 /* ViewController.swift */,
 				404E5D9F220F5A0600D84467 /* Main.storyboard */,
@@ -125,6 +128,7 @@
 				404E5DA6220F5A0900D84467 /* LaunchScreen.storyboard in Resources */,
 				404E5DA3220F5A0900D84467 /* Assets.xcassets in Resources */,
 				404E5DA1220F5A0600D84467 /* Main.storyboard in Resources */,
+				404E5DAE220F634400D84467 /* TutorialPractice in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
