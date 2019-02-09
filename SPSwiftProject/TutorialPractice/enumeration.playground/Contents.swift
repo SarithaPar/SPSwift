@@ -43,8 +43,8 @@ var tempValue = WithAssociativeValue.Student("Pink")
 var tempValue1 = WithAssociativeValue.Marks(10, 20, 30)
 
 switch tempValue1 {
-    case .Student(let name):
-        print(tempValue1, name)
-    case .Marks(let v1, let v2, let v3):
-        print(tempValue1, v1,v2,v3)
+case .Student(let name):
+    print(tempValue1, name)
+case .Marks(let v1, let v2, let v3):
+    print(tempValue1, v1,v2,v3)
 }
