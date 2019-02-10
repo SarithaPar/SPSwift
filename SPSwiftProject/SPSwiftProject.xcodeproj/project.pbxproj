@@ -17,6 +17,8 @@
 
 /* Begin PBXFileReference section */
 		40107763220F923E002E4D20 /* Array_sumOfTwo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Array_sumOfTwo.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		40107764220FF4F7002E4D20 /* ReverseInteger.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ReverseInteger.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		40107765220FFE58002E4D20 /* Palimdrome.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Palimdrome.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		404E5D98220F5A0600D84467 /* SPSwiftProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPSwiftProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404E5D9B220F5A0600D84467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		404E5D9D220F5A0600D84467 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,8 @@
 		40107762220F920D002E4D20 /* LeetCode */ = {
 			isa = PBXGroup;
 			children = (
+				40107765220FFE58002E4D20 /* Palimdrome.playground */,
+				40107764220FF4F7002E4D20 /* ReverseInteger.playground */,
 				40107763220F923E002E4D20 /* Array_sumOfTwo.playground */,
 			);
 			path = LeetCode;
