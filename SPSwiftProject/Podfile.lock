@@ -1,0 +1,24 @@
+PODS:
+  - GCDWebServer (3.5.2):
+    - GCDWebServer/Core (= 3.5.2)
+  - GCDWebServer/Core (3.5.2)
+  - SBTUITestTunnel/Client (3.1.4)
+  - SBTUITestTunnel/Server (3.1.4):
+    - GCDWebServer (~> 3.0)
+
+DEPENDENCIES:
+  - SBTUITestTunnel/Client
+  - SBTUITestTunnel/Server
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GCDWebServer
+    - SBTUITestTunnel
+
+SPEC CHECKSUMS:
+  GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990
+  SBTUITestTunnel: fd1c56bb3bad8f7dcbe4370e718ec397921a2137
+
+PODFILE CHECKSUM: bbcfcc4269cd0e41d32178b979e331af18100867
+
+COCOAPODS: 1.5.3

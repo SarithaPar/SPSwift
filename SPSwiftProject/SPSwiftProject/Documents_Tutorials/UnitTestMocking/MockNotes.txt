@@ -1,0 +1,17 @@
+Mocking with SPMaster:
+
+- Framework: OC Mock [http://ocmock.org/]
+    - It mock objects for Objective-C:
+    1. Stubs - Return values for specific method invocations
+    2. Dynamic Mocks - Verify interaction patterns
+    3. Partial Mocks - overwrite methods of existing objects
+
+Steps involved in project:
+
+1. Create a Protocol - APIRequestManager. It includes list of API that are mocked.
+
+######
+
+- What is Stub? - Stub is a dummy object that stubs out the minimal behavior
+- OCMock: used to Stub and mock data in a unit test.
+- Data mocked using NSCoder and Decoder. 

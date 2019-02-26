@@ -7,7 +7,35 @@
 		<key>SPSwiftProject.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>5</integer>
+		</dict>
+		<key>SPSwiftProjectTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>SPSwiftProjectUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>404E5D97220F5A0600D84467</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>408AFDEE22252313002476CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>408AFDFC2225231C002476CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -1,0 +1,44 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '11.0'
+
+target 'SPSwiftProject' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+        use_frameworks!
+
+    # Pods for SPSwiftProject
+        pod 'SBTUITestTunnel/Server', :configurations => ['Debug']
+
+
+end
+
+def testPods
+    pod 'OCMockito', '= 5.0.1' #5.1 causes test failure, copy fails for mock location
+    pod 'OCHamcrest', '= 7.0.2' #7.1 caused test failures in legacy tests
+    pod 'OHHTTPStubs/Swift'
+    pod 'Nimble'
+    pod 'SBTUITestTunnel/Server', :configurations => ['Debug']
+    pod 'iOSSnapshotTestCase'
+end
+
+def uiTests
+    pod 'SBTUITestTunnel/Client'
+end
+
+target 'SPSwiftProjectTests' do
+    uiTests
+end
+
+target 'SPSwiftProjectUITests' do
+    uiTests
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |configuration|
+            xcconfig_path = configuration.base_configuration_reference.real_path
+            xcconfig = Xcodeproj::Config.new(xcconfig_path)
+            xcconfig.includes |= ['../../../Shared.xcconfig']
+            xcconfig.save_as(xcconfig_path)
+        end
+    end
+end

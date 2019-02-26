@@ -1,0 +1,160 @@
+Example: We want to mock SRP result with car attribute
+
+func givenIAmOnSRPWithCarAdWithAttributes(count: Int, year: Int, millage: Int, transmission: String)
+{
+    //1. First set the car Ad details
+    let carAd = AdUtility().getCarAd(year: year, millage: millage, transmission: transmission)
+
+    //2.  Stub the car Ad details into real network
+    DeepLink().jumpToSRP(search: TestSearch(ads: (0..<count).map { _ in carAd }))
+}
+
+//1.First set the car Ad details
+
+class AdUtility {
+
+    func getCarAd(year: Int, millage: Int, transmission: String) -> TestAd
+    {
+        let countryname = CountryNameUtility().getCountryName()
+        let year = String(year)
+        let millage = String(millage)
+        var categoryID: String = ""
+        var canonicalYear: String = ""
+        var canonicalMileage: String = ""
+        var canonicalTransmission: String = ""
+        var carAd: TestAd? = nil
+
+        switch countryname
+        {
+            case "AU":
+                categoryID = "9299"
+                canonicalYear = "cars.caryear"
+                canonicalMileage = "cars.carmileageinkms"
+                canonicalTransmission = "cars.cartransmission"
+            default:
+                categoryID = "27"
+                canonicalYear = "caryear"
+                canonicalMileage = "carmileageinkms"
+                canonicalTransmission = "cartransmission"
+        }
+
+    let adAttrbutes: [TestAdAttribute] = [TestAdAttribute(canonicalName: canonicalYear, canonicalValue: "1984", localizedValue: year),
+    TestAdAttribute(canonicalName: canonicalMileage, canonicalValue: "1984", localizedValue: millage),
+    TestAdAttribute(canonicalName: canonicalTransmission, canonicalValue: "bigbrother", localizedValue: transmission)]
+
+    carAd = TestAd(categoryID: categoryID, attributes: adAttrbutes)
+
+    return carAd!
+    }
+}
+
+
+//2.  Stub the car Ad details into real network
+
+//2a. TestSearch: It is a codable object, as need to inject in network
+
+    struct TestSearch: Codable
+    {
+        let keyword: String?
+        let locationId: String?
+        let categoryId: String?
+        let priceType: String?
+        let ads: [TestAd]
+        let distance: Double?
+        var options = [String: String]()
+
+        init(
+            keyword: String? = nil,
+            locationId: String? = nil,
+            categoryId: String? = nil,
+            priceType: String? = nil,
+            distance: Double? = nil,
+            ads: [TestAd]
+            )
+        {
+            self.keyword = keyword
+            self.ads = ads
+            self.locationId = locationId
+            self.categoryId = categoryId
+            self.priceType = priceType
+            self.distance = distance
+            self.categoryId = categoryId
+            self.priceType = priceType
+
+            if let locationId = locationId
+            {
+                self.options.updateValue(locationId, forKey: "locationId")
+            }
+        }
+
+        // To create n number of Test Ad object instance
+        init(numResults: Int = 20, options: [String: String])
+        {
+            self.init(ads: (0..<numResults).map { TestAd(title: "Test Ad \($0)") })
+            self.options = options
+        }
+}
+
+// 2b. Using AppCommand Set mock data into the network
+
+    enum AppCommands: String {
+        case setSearchResponse = "setSearchResponse"
+    }
+
+// 2b-1:
+
+    // TunnelSetup - stub service decodes the stubbed objects
+
+    import SBTUITestTunnel
+    import Foundation
+    @testable import SPUtils
+
+    @objc class TunnelSetup: NSObject
+    {
+        private static let stubCompletionSemaphore = DispatchSemaphore(value: 0)
+        private static let stubServiceFactoryController = StubServiceFactoryController()
+        private static let stubAuthenticationProvider = StubAuthenticationProvider()
+
+        @objc static func setupTestTunnel() -> Bool
+        {
+            registerCommand(.setSearchResponse) { search in
+                stubServiceFactoryController.setupSearchResponse(search: decode(search))
+                return nil
+            }
+        }
+    }
+
+    // StubServiceFactoryController() injects the Stub object into main thread
+
+        class StubServiceFactoryController
+        {
+            var serviceFactoryWithStubs = ServiceFactoryWithStubs()
+
+            func setupSearchResponse(search: TestSearch)
+            {
+                runOnMainThreadAndWait
+                {
+                    self.serviceFactoryWithStubs.searchResultsServiceStubbed.setResults(ads: search.ads.map
+                    {
+                        $0.asAd()
+                    }, forSearchParameters: search.getSearchParameters())
+            }
+        }
+
+// Jump on Page using Deeplink and set mocked data before loading the page.
+
+    class DeepLink {
+
+        func jumpToSRP(search: TestSearch? = nil)
+        {
+            // If No data then perfrom AppCommand to setSearchResponse mock data
+            if (search != nil)
+            {
+                UITest.performCommandNamed(AppCommands.setSearchResponse, object: search)
+            }
+
+            // Deeplink to the destination page, with codable TestSearch object
+            UITest.performCommandNamed(AppCommands.moveToPage, object: TestDestination(page: AppPage.srp(search ?? TestSearch(ads: [TestAd]()))))
+        }
+
+    }
