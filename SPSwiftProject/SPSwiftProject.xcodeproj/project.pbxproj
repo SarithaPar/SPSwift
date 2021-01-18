@@ -27,6 +27,7 @@
 		404E5DA5220F5A0900D84467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		404E5DA7220F5A0900D84467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		404E5DAD220F634400D84467 /* TutorialPractice */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TutorialPractice; sourceTree = SOURCE_ROOT; };
+		40C35BB925AC3AE00088126B /* emailValidation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = emailValidation.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		40EEC5BD2211386200718118 /* Roman_Integer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Roman_Integer.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -71,6 +72,7 @@
 		404E5D9A220F5A0600D84467 /* SPSwiftProject */ = {
 			isa = PBXGroup;
 			children = (
+				40C35BB825AC38D10088126B /* MinorProjects */,
 				40107762220F920D002E4D20 /* LeetCode */,
 				404E5DAD220F634400D84467 /* TutorialPractice */,
 				404E5D9B220F5A0600D84467 /* AppDelegate.swift */,
@@ -81,6 +83,14 @@
 				404E5DA7220F5A0900D84467 /* Info.plist */,
 			);
 			path = SPSwiftProject;
+			sourceTree = "<group>";
+		};
+		40C35BB825AC38D10088126B /* MinorProjects */ = {
+			isa = PBXGroup;
+			children = (
+				40C35BB925AC3AE00088126B /* emailValidation.playground */,
+			);
+			path = MinorProjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
